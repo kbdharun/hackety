@@ -11,7 +11,7 @@ env:
     REGISTRY_USER: ${{ github.actor }}
     REGISTRY_PASSWORD: ${{ github.token }}
     DOCKER_USER: ${{ secrets.DOCKER_USER }}
-    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 jobs:
   build:
     name: Build image
@@ -54,7 +54,7 @@ jobs:
         tags: ${{ steps.build-action.outputs.tags }}
         registry: ${{ env.DOCKER_REGISTRY }}
         username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_TOKEN }}
         extra-args: |
           --disable-content-trust
     - name: Echo outputs
